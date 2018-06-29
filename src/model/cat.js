@@ -2,15 +2,22 @@
 
 import mongoose from 'mongoose';
 
-const noteSchema = mongoose.Schema({
-  title: {
+const catSchema = mongoose.Schema({
+  _id: {
     type: String,
     required: true,
     unique: true,
   },
-  content: {
+  age: {
+    type: Number,
+    minlength: 0,
+  },
+  weight: {
+    type: Number,
+  },
+  color: {
     type: String,
-    minlength: 10,
+    unique: true,
   },
   createdOn: {
     type: Date,
@@ -22,4 +29,4 @@ const noteSchema = mongoose.Schema({
 // https://stackoverflow.com/questions/50687592/jest-and-mongoose-jest-has-detected-opened-handles
 // the first arg of mongoose.model is the name of your collection
 const skipInit = process.env.NODE_ENV === 'development';
-export default mongoose.model('notes', noteSchema, 'notes', skipInit);
+export default mongoose.model('cats', catSchema, 'cats', skipInit);
