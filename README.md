@@ -5,41 +5,22 @@
 
 ## My api includes cats, here are there stats
 ```
-Dinosaur {
   _id: a unique id that is created on instantiation
-  name: string (required)
-  species: string (optional)
-  eatsMeat: boolean (optional)
-  eatsPlants: boolean (optional)
+  color: string (optional)
+  weight: string (optional)
+  age: string (optional)
 }
 ```
 
 ## API Endpoints
-POST api/dinosaur
-```
-  // example post request body
-  request.body: {
-    name: 'Little Foot',
-    species: 'Long Neck',
-    eatsMeat: false,
-    eatsPlants: true,
-}
-```
+POST api/cat
+    name: 'anything',
+    color: 'blue',
+    weight: 'some number',
+    age: '10'
 
-GET api/dinosaur?id={dino_id}
-```
-// example endpoint to get dinosaur # 123
-api/dinosaur?id=123
-```
+GET api/cat?id={cat_id}
 
-DELETE api/dinosaur?id={dino_id}
-```
-// example endpoint to delete dinosaur # 123
-api/dinosaur?id=123
-```
+DELETE api/cat?id={cat_id}
 
-PUT api/dinosaurs?id={dino_id}
-```
-// example endpoint to delete dinosaur # 123
-api/dinosaur?id=123
-```
+PUT api/cat?id={cat_id}
