@@ -3,9 +3,8 @@
 import mongoose from 'mongoose';
 
 const catSchema = mongoose.Schema({
-  _id: {
+  title: {
     type: String,
-    required: true,
     unique: true,
   },
   age: {
