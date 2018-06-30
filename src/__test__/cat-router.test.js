@@ -11,9 +11,9 @@ const apiUrl = `http://localhost:${process.env.PORT}/api/cats`;
 
 const createCatMockPromise = () => {
   return new Cat({
-    _id: faker.lorem.words(1),
-    weight: faker.lorem.numbers(),
-    age: faker.lorem.numbers(),
+    title: 'CATS',
+    weight: 20,
+    age: 6,
     color: faker.lorem.words(1),
   }).save();
   // .save is a built-in method from mongoose to save/post 
@@ -31,15 +31,16 @@ afterEach(() => Cat.remove({}));
 describe('POST requests to /api/cats', () => {
   test('POST 200 for successful creation of cat', () => {
     const mockCatToPost = {
-      _id: faker.lorem.words(1),
-      weight: faker.lorem.numbers(),
-      age: faker.lorem.numbers(),
+      title: 'CATS',
+      weight: 43,
+      age: 2,
       color: faker.lorem.words(1),
     };
     return superagent.post(apiUrl)
       .send(mockCatToPost)
       .then((response) => {
         expect(response.status).toEqual(200);
+        expect(response.body.title).toEqual(mockCatToPost.title);
         expect(response.body.age).toEqual(mockCatToPost.age);
         expect(response.body.weight).toEqual(mockCatToPost.weight);
         expect(response.body.color).toEqual(mockCatToPost.color);
@@ -119,18 +120,18 @@ describe('PUT request to /api/cats', () => {
       .then((newCat) => {
         return superagent.put(`${apiUrl}/${newCat._id}`)
           .send({ 
-            _id: 'updated _id', 
-            age: 'updated age', 
-            weight: 'updated weight', 
-            color: 'updated color', 
-            createdOn: 'updated createdOn', 
+            title: 'updated title', 
+            age: 4,
+            weight: 7,
+            color: 'updated color',
           })
           .then((response) => {
             expect(response.status).toEqual(200);
-            expect(response.body.weight).toEqual('updated _id');
-            expect(response.body.age).toEqual('updated age');
+            expect(response.body.title).toEqual('updated title');
+            expect(response.body.age).toEqual(4);
+            expect(response.body.weight).toEqual(7);
+            expect(response.body.color).toEqual('updated color');
             expect(response.body._id.toString()).toEqual(newCat._id.toString());
-            expect(response.body.color.toString()).toEqual(newCat.color.toString());
           })
           .catch((err) => {
             throw err;
