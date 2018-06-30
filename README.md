@@ -1,7 +1,7 @@
 # Lab 11-12 MongoDB Express API
 
 ## Travis Badge
-
+[![Build Status](https://travis-ci.org/kgamer007/11-12-mongodb-express-api.svg?branch=master)](https://travis-ci.org/kgamer007/11-12-mongodb-express-api)
 
 ## My api includes cats, here are there stats
 ```
