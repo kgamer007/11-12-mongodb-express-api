@@ -1,5 +1,8 @@
 # Lab 11-12 MongoDB Express API
 
+## Deployment
+https://express-middleware-11-12.herokuapp.com/
+
 ## Travis Badge
 [![Build Status](https://travis-ci.org/kgamer007/11-12-mongodb-express-api.svg?branch=master)](https://travis-ci.org/kgamer007/11-12-mongodb-express-api)
 
