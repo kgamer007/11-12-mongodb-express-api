@@ -72,18 +72,6 @@ describe('POST requests to /api/cats', function () {
       expect(err.status).toEqual(400);
     });
   });
-
-  test.only('POST 409 for duplicate key', function () {
-    return createCatMockPromise().then(function (newCat) {
-      return _superagent2.default.post(apiUrl).send({ title: newCat.title }).then(function (response) {
-        throw response;
-      }).catch(function (err) {
-        expect(err.status).toEqual(409);
-      });
-    }).catch(function (err) {
-      throw err;
-    });
-  });
 });
 
 describe('GET requests to /api/cats', function () {
