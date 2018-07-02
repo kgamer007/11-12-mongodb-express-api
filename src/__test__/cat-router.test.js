@@ -65,23 +65,6 @@ describe('POST requests to /api/cats', () => {
         expect(err.status).toEqual(400);
       });
   });
-
-  test('POST 409 for duplicate key', () => {
-    return createCatMockPromise()
-      .then((newCat) => {
-        return superagent.post(apiUrl)
-          .send({ title: newCat.title })
-          .then((response) => {
-            throw response;
-          })
-          .catch((err) => {
-            expect(err.status).toEqual(409);
-          });
-      })
-      .catch((err) => {
-        throw err;
-      });
-  });
 });
 
 describe('GET requests to /api/cats', () => {
