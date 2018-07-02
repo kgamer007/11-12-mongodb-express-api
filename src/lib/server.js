@@ -4,12 +4,16 @@ import express from 'express';
 import mongoose from 'mongoose';
 import logger from './logger';
 import catRouter from '../router/cat-router';
+import loggerMiddleware from './middleware/logger-middleware';
+import errorMiddleware from './middleware/error-middleware';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 let server;
 
 app.use(catRouter);
+app.use(loggerMiddleware);
+app.use(errorMiddleware);
 
 app.all('*', (request, response) => {
   logger.log(logger.INFO, 'SERVER: Returning a 404 from the catch-all/default route');
